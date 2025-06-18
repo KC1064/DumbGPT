@@ -19,10 +19,10 @@ export default function LoginPage() {
         try {
             const userCred = await signInWithEmailAndPassword(auth, email, password);
             console.log("User logged in:", userCred.user);
-            router.push("/"); // Redirect to home page after successful login
+            router.push("/chat"); // Redirect to home page after successful login
         } catch (error: any) {
             let errorMessage = "Login failed. Please try again.";
-            
+
             // Handle specific Firebase error codes
             switch (error.code) {
                 case "auth/invalid-email":
@@ -40,7 +40,7 @@ export default function LoginPage() {
                 default:
                     errorMessage = error.message;
             }
-            
+
             setError(errorMessage);
         } finally {
             setLoading(false);

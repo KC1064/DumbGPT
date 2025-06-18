@@ -19,7 +19,7 @@ export default function SignupPage() {
         try {
             const userCred = await createUserWithEmailAndPassword(auth, email, password);
             console.log("User signed up:", userCred.user);
-            router.push("/"); // Redirect to home page after successful signup
+            router.push("/chat"); // Redirect to home page after successful signup
         } catch (error: any) {
             let errorMessage = "Signup failed. Please try again.";
             
