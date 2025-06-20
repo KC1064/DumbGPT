@@ -16,7 +16,7 @@ const Header = () => {
                 className="h-20 w-24"
             />
             <div className="text-white flex gap-4 items-center">
-                <Link href="/login" className="z-10">
+                <Link href="/login">
                     <motion.button
                         whileHover={{ rotate: 5, scale: 1.2 }}
                         transition={{ duration: 0.15 }}
@@ -24,7 +24,7 @@ const Header = () => {
                         Sign In
                     </motion.button>
                 </Link>
-                <Link href="/signup" className="z-10">
+                <Link href="/signup" >
                     <motion.button
                         whileHover={{ rotate: 5, scale: 1.2 }}
                         transition={{ duration: 0.15 }}
