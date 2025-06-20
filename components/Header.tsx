@@ -18,16 +18,16 @@ const Header = () => {
             <div className="text-white flex gap-4 items-center">
                 <Link href="/login" className="z-10">
                     <motion.button
-                    whileHover={{rotate:10}}
-                    transition={{duration:0.15}}
+                        whileHover={{ rotate: 5, scale: 1.2 }}
+                        transition={{ duration: 0.15 }}
                         className="cursor-pointer border-2 font-extrabold p-2 min-w-[90px] h-max rounded-md text-sm">
                         Sign In
                     </motion.button>
                 </Link>
                 <Link href="/signup" className="z-10">
-                <motion.button
-                    whileHover={{rotate:10}}
-                    transition={{duration:0.15}}
+                    <motion.button
+                        whileHover={{ rotate: 5, scale: 1.2 }}
+                        transition={{ duration: 0.15 }}
                         className="cursor-pointer border-2 font-extrabold p-2 min-w-[90px] h-max rounded-md text-sm">
                         Sign Up
                     </motion.button>
