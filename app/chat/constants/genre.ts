@@ -1,0 +1,58 @@
+export const genres = [
+  {
+    name: "Medical",
+    icon: "🏥",
+    description: "Health, medicine, and medical terms",
+    color: "bg-red-900/30 text-red-300 border-red-800/50",
+    hoverColor: "hover:bg-red-800/40",
+  },
+  {
+    name: "Legal",
+    icon: "⚖️",
+    description: "Law, contracts, and legal concepts",
+    color: "bg-blue-900/30 text-blue-300 border-blue-800/50",
+    hoverColor: "hover:bg-blue-800/40",
+  },
+  {
+    name: "Technology",
+    icon: "💻",
+    description: "Tech, programming, and digital concepts",
+    color: "bg-purple-900/30 text-purple-300 border-purple-800/50",
+    hoverColor: "hover:bg-purple-800/40",
+  },
+  {
+    name: "Sports",
+    icon: "⚽",
+    description: "Sports rules, strategies, and terminology",
+    color: "bg-green-900/30 text-green-300 border-green-800/50",
+    hoverColor: "hover:bg-green-800/40",
+  },
+  {
+    name: "Finance",
+    icon: "💰",
+    description: "Money, investing, and financial terms",
+    color: "bg-yellow-900/30 text-yellow-300 border-yellow-800/50",
+    hoverColor: "hover:bg-yellow-800/40",
+  },
+  {
+    name: "Science",
+    icon: "🔬",
+    description: "Physics, chemistry, and scientific concepts",
+    color: "bg-indigo-900/30 text-indigo-300 border-indigo-800/50",
+    hoverColor: "hover:bg-indigo-800/40",
+  },
+  {
+    name: "History",
+    icon: "📚",
+    description: "Historical events and contexts",
+    color: "bg-orange-900/30 text-orange-300 border-orange-800/50",
+    hoverColor: "hover:bg-orange-800/40",
+  },
+  {
+    name: "General",
+    icon: "🌟",
+    description: "Everyday topics and general knowledge",
+    color: "bg-pink-900/30 text-pink-300 border-pink-800/50",
+    hoverColor: "hover:bg-pink-800/40",
+  },
+];
