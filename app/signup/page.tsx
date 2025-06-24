@@ -101,8 +101,11 @@ export default function SignupPage() {
             <Card className="w-full max-w-md hover-lift animate-in fade-in slide-in-from-bottom-4 duration-1000 bg-gray-800/80 backdrop-blur-sm border-gray-700 shadow-2xl">
                 <CardHeader className="text-center">
                     <div className="flex items-center justify-center space-x-2 mb-4 group">
-                        <Brain className="h-8 w-8 text-blue-400 transition-all duration-300 group-hover:rotate-12 group-hover:scale-110" />
-                        <span className="text-2xl font-bold text-white transition-colors duration-300">DumbGPT</span>
+                        <Link href={"/"} className="flex items-center justify-center space-x-2 mb-4 group">
+                            <Brain className="h-8 w-8 text-blue-400 transition-all duration-300 group-hover:rotate-12 group-hover:scale-110" />
+                            <span className="text-2xl font-bold text-white transition-colors duration-300">DumbGPT</span>
+
+                        </Link>
                     </div>
                     <CardTitle className="text-2xl text-white transition-colors duration-300">Create Account</CardTitle>
                     <CardDescription className="text-gray-300 transition-colors duration-300">

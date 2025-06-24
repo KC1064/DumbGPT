@@ -22,6 +22,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { getAuth, signOut } from "firebase/auth";
 import { useEffect } from "react";
+import { useAuth } from "../context/AuthContext";
+import { useRouter } from "next/navigation";
 
 
 const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GEMINI_API_KEY || "");
@@ -93,6 +95,8 @@ interface Message {
 }
 
 export default function ChatPage() {
+  const { user, loading } = useAuth();
+  const router = useRouter();
   const [selectedGenre, setSelectedGenre] = useState("General");
   const [messages, setMessages] = useState<Message[]>([
     {
@@ -102,26 +106,17 @@ export default function ChatPage() {
       timestamp: new Date(),
     },
   ]);
-  const [user, setUser] = useState<{ name: string; avatar: string } | null>(null);
+  const [isTyping, setIsTyping] = useState(false);
 
   useEffect(() => {
-    const authUser = getAuth().currentUser;
-
-    if (authUser) {
-      const fullName = authUser.displayName || authUser.email || "User";
-      const initials = fullName
-        .split(" ")
-        .map(word => word[0])
-        .join("")
-        .toUpperCase()
-        .slice(0, 2);
-
-      setUser({ name: fullName, avatar: initials });
+    if (!loading && !user) {
+      router.replace("/login");
     }
-  }, []);
+  }, [user, loading, router]);
 
-  const [inputMessage, setInputMessage] = useState("");
-  const [isTyping, setIsTyping] = useState(false);
+  if (loading || !user) {
+    return <div className="flex items-center justify-center h-screen text-white">Loading...</div>;
+  }
 
   const getGenrePrompt = (genre: string) => {
     const prompts: Record<string, string> = {
@@ -194,6 +189,8 @@ export default function ChatPage() {
   };
 
   const selectedGenreData = genres.find((g) => g.name === selectedGenre) || genres[7];
+
+  const [inputMessage, setInputMessage] = useState("");
 
   return (
     <div className="h-screen bg-gray-900 flex">
@@ -301,9 +298,9 @@ export default function ChatPage() {
               {user && (
                 <div className="flex items-center gap-3 text-white p-2 rounded-md bg-gray-700/40 border border-gray-600">
                   <div className="w-8 h-8 bg-blue-500 rounded-full text-white font-semibold flex items-center justify-center uppercase">
-                    {user.name?.charAt(0)}
+                    {(user.displayName || user.email || "U")[0]}
                   </div>
-                  <div className="text-sm font-medium truncate">{user.name}</div>
+                  <div className="text-sm font-medium truncate">{user.displayName || user.email}</div>
                 </div>
               )}
             </motion.div>
