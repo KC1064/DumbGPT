@@ -52,7 +52,7 @@ export default function LandingPage() {
           </div>
           <div className="flex items-center space-x-4">
             <div className="transition-transform duration-200 hover:scale-105">
-              <Button variant="ghost" asChild className="text-gray-300 hover:text-black">
+              <Button variant="ghost" asChild className="text-black bg-white">
                 <Link href="/login">Login</Link>
               </Button>
             </div>

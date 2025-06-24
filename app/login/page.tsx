@@ -109,11 +109,7 @@ export default function LoginPage() {
                   {loading ? "Signing In..." : "Sign In"}
                   <span className="ml-2 transition-transform duration-300 group-hover:translate-x-1">→</span>
                 </Button>
-                <div className="text-center text-sm">
-                  <Link href="/forgot-password" className="text-blue-400 hover:underline transition-colors duration-300">
-                    Forgot your password?
-                  </Link>
-                </div>
+                
                 <div className="text-center text-sm text-gray-400 transition-colors duration-300">
                   Don't have an account?{" "}
                   <Link href="/signup" className="text-blue-400 hover:underline transition-colors duration-300">
