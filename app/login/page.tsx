@@ -3,6 +3,14 @@ import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../config/firebase";
 import { useRouter } from "next/navigation";
+import Link from "next/link"
+import { Brain } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { AnimatedBackground } from "@/components/animated-background"
+
 
 export default function LoginPage() {
     const [email, setEmail] = useState("");
@@ -48,53 +56,75 @@ export default function LoginPage() {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-50">
-            <div className="max-w-md w-full space-y-8 p-8 bg-white rounded-lg shadow">
-                <div>
-                    <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-                        Sign in to your account
-                    </h2>
+        <div className="min-h-screen flex items-center justify-center p-4 relative">
+          <AnimatedBackground />
+    
+          <Card className="w-full max-w-md hover-lift animate-in fade-in slide-in-from-bottom-4 duration-1000 bg-gray-800/80 backdrop-blur-sm border-gray-700 shadow-2xl">
+            <CardHeader className="text-center">
+              <div className="flex items-center justify-center space-x-2 mb-4 group">
+                <Brain className="h-8 w-8 text-blue-400 transition-all duration-300 group-hover:rotate-12 group-hover:scale-110" />
+                <span className="text-2xl font-bold text-white transition-colors duration-300">DumbGPT</span>
+              </div>
+              <CardTitle className="text-2xl text-white transition-colors duration-300">Welcome Back</CardTitle>
+              <CardDescription className="text-gray-300 transition-colors duration-300">
+                Sign in to continue simplifying complex topics
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <form onSubmit={handleLogin} className="space-y-4">
+                {error && (
+                  <div className="p-3 text-sm text-red-400 bg-red-900/20 border border-red-800 rounded-md">
+                    {error}
+                  </div>
+                )}
+                <div className="space-y-2">
+                  <Label htmlFor="email" className="text-gray-200">
+                    Email
+                  </Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
+                    placeholder="Enter your email"
+                    className="transition-all duration-300 focus:scale-[1.02] bg-gray-700 border-gray-600 text-white placeholder:text-gray-400"
+                    required
+                  />
                 </div>
-                <form className="mt-8 space-y-6" onSubmit={handleLogin}>
-                    {error && (
-                        <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded">
-                            {error}
-                        </div>
-                    )}
-                    <div className="rounded-md shadow-sm -space-y-px">
-                        <div>
-                            <input
-                                value={email}
-                                onChange={e => setEmail(e.target.value)}
-                                type="email"
-                                required
-                                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                                placeholder="Email address"
-                            />
-                        </div>
-                        <div>
-                            <input
-                                value={password}
-                                onChange={e => setPassword(e.target.value)}
-                                type="password"
-                                required
-                                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                                placeholder="Password"
-                            />
-                        </div>
-                    </div>
-
-                    <div>
-                        <button
-                            type="submit"
-                            disabled={loading}
-                            className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
-                        >
-                            {loading ? "Signing in..." : "Sign in"}
-                        </button>
-                    </div>
-                </form>
-            </div>
+                <div className="space-y-2">
+                  <Label htmlFor="password" className="text-gray-200">
+                    Password
+                  </Label>
+                  <Input
+                    id="password"
+                    type="password"
+                    value={password}
+                    onChange={e => setPassword(e.target.value)}
+                    placeholder="Enter your password"
+                    className="transition-all duration-300 focus:scale-[1.02] bg-gray-700 border-gray-600 text-white placeholder:text-gray-400"
+                    required
+                  />
+                </div>
+                <Button className="w-full hover-lift group glow-effect" type="submit" disabled={loading}>
+                  {loading ? "Signing In..." : "Sign In"}
+                  <span className="ml-2 transition-transform duration-300 group-hover:translate-x-1">→</span>
+                </Button>
+                <div className="text-center text-sm">
+                  <Link href="/forgot-password" className="text-blue-400 hover:underline transition-colors duration-300">
+                    Forgot your password?
+                  </Link>
+                </div>
+                <div className="text-center text-sm text-gray-400 transition-colors duration-300">
+                  Don't have an account?{" "}
+                  <Link href="/signup" className="text-blue-400 hover:underline transition-colors duration-300">
+                    Sign up
+                  </Link>
+                </div>
+              </form>
+            </CardContent>
+          </Card>
         </div>
-    );
-}
+      )
+    }
+    
+
