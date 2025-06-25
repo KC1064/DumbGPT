@@ -254,7 +254,7 @@ export default function LandingPage() {
             <div className="transition-transform duration-200 hover:scale-105 hover:-translate-y-1">
               <Button size="lg" variant="secondary" className="text-lg px-8 py-6 group" asChild>
                 <Link href="/chat">
-                  Start Free Chat
+                  Start Chatting
                   <span
                     className="ml-2"
                   >
@@ -267,7 +267,7 @@ export default function LandingPage() {
               <Button
                 size="lg"
                 variant="outline"
-                className="text-lg px-8 py-6 text-white border-white hover:bg-white hover:text-blue-800"
+                className="text-lg px-8 py-6 text-blue-500 border-white hover:bg-white hover:text-blue-800"
                 asChild
               >
                 <Link href="/signup">Create Account</Link>
@@ -300,7 +300,7 @@ export default function LandingPage() {
             </div>
           </div>
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 DumbGPT. Making complex things simple, one explanation at a time.</p>
+            <p>&copy; 2025 DumbGPT. Making complex things simple, one explanation at a time.</p>
           </div>
         </div>
       </footer>

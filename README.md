@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# 🤖 DumbGPT: Ask Dumb, Learn Smart.
+_Your AI buddy that breaks down **complex concepts** into bite-sized, easily understandable chunks – no jargon, just clarity._
 
-First, run the development server:
+---
+
+## 🛠 Tech Stack
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white" />
+  <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black" />
+  <img src="https://img.shields.io/badge/ShadCN%20UI-000000?style=for-the-badge&logo=tailwindcss&logoColor=white" />
+  <img src="https://img.shields.io/badge/Framer%20Motion-EF5B5B?style=for-the-badge&logo=framer&logoColor=white" />
+  <img src="https://img.shields.io/badge/TailwindCSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
+  <img src="https://img.shields.io/badge/React--Markdown-8A4182?style=for-the-badge&logo=markdown&logoColor=white" />
+  <img src="https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black" />
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" />
+  <img src="https://img.shields.io/badge/Gemini%20LLM-4285F4?style=for-the-badge&logo=google&logoColor=white" />
+</p>
+
+---
+
+## 🚀 Demo
+
+🎥 **Live Preview**:  
+[🔗 Visit DumbGPT](https://your-dumbgpt-demo-link.com)
+---
+
+## 📦 Installation & Cloning Guide
+
+To get started locally:
 
 ```bash
+git clone https://github.com/KC1064/DumbGPT.git
+cd DumbGPT
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+````
+
+**Requirements:**
+
+* 📦 Node.js ≥ v18
+* 🔐 Firebase Project (for chat storage, auth, etc.)
+* 📄 `.env.local` with Firebase credentials
+
+```bash
+# .env.local
+NEXT_PUBLIC_FIREBASE_API_KEY=firebase_api_key
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=firebase_auth_domain
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=project_id
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=storage_bucket
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=12345678
+NEXT_PUBLIC_FIREBASE_APP_ID=1:22314315235
+NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=measurement_id
+NEXT_PUBLIC_GEMINI_API_KEY=gemini_api_key
+
 ```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🌟 Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+* 🧠 **Simplify complex things** into everyday language
+* 🗂️ **Multiple genres** – science, history, tech, you name it!
+* 💬 **Chat-like UI** for a smooth, intuitive experience
+* 🎨 **Modern animations & UI components** powered by ShadCN & Framer Motion
+* 📝 Supports **Markdown answers** for structured responses
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 💖 Made with Love
 
-To learn more about Next.js, take a look at the following resources:
+Crafted by [**Kironmay Mishra**](https://github.com/kc1064) ✨
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+> *“Because not all AIs have to sound like PhDs!”*
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
