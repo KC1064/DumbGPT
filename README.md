@@ -21,10 +21,7 @@ _Your AI buddy that breaks down **complex concepts** into bite-sized, easily und
 ---
 
 ## 🚀 Demo
-
-🎥 **Live Preview**:  
-[🔗 Visit DumbGPT](https://your-dumbgpt-demo-link.com)
----
+[🔗 Visit DumbGPT](https://dumb-gpt.vercel.app/)
 
 ## 📦 Installation & Cloning Guide
 
