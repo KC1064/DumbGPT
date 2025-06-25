@@ -5,31 +5,7 @@ import { ArrowRight, Brain, MessageSquare, Sparkles, Zap, BookOpen } from "lucid
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { AnimatedBackground } from "@/components/animated-background"
-import { motion } from "motion/react"
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.08,
-      duration: 0.6,
-      ease: [0.4, 0, 0.2, 1],
-    },
-  },
-}
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 16 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      ease: [0.4, 0, 0.2, 1],
-    },
-  },
-}
+import { easeInOut, motion } from "motion/react"
 
 export default function LandingPage() {
   return (
@@ -69,14 +45,16 @@ export default function LandingPage() {
       <section className="py-20 px-4 relative">
         <motion.div
           className="container mx-auto text-center max-w-4xl"
-          initial="hidden"
-          animate="visible"
-          variants={containerVariants}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
         >
-          <motion.div className="mb-8" variants={itemVariants}>
+          <motion.div className="mb-8" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}>
             <motion.h1
               className="text-5xl md:text-6xl font-bold text-white mb-6"
-              variants={itemVariants}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
             >
               Complex Things Made{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
@@ -85,14 +63,16 @@ export default function LandingPage() {
             </motion.h1>
             <motion.p
               className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto"
-              variants={itemVariants}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
             >
-              DumbGPT breaks down complicated topics into easy-to-understand explanations. Whether it's medical jargon,
+              DumbGPT breaks down complicated topics into easy-to-understand explanations. Whether it&apos;s medical jargon,
               legal documents, or tech concepts - we make it simple.
             </motion.p>
           </motion.div>
 
-          <motion.div className="flex flex-col sm:flex-row gap-4 justify-center mb-12" variants={itemVariants}>
+          <motion.div className="flex flex-col sm:flex-row gap-4 justify-center mb-12" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}>
             <div className="transition-transform duration-200 hover:scale-105 hover:-translate-y-1">
               <Button size="lg" className="text-lg px-8 py-6 group" asChild>
                 <Link href="/chat">
@@ -118,7 +98,9 @@ export default function LandingPage() {
           {/* Demo Preview */}
           <motion.div
             className="bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-2xl p-8 max-w-3xl mx-auto border border-gray-700"
-            variants={itemVariants}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
           >
             <div className="flex items-center space-x-2 mb-4">
               {[0, 1, 2].map((i) => (
@@ -131,14 +113,14 @@ export default function LandingPage() {
             <div className="text-left space-y-4">
               <div className="bg-gray-700 rounded-lg p-4 transition-transform duration-200 hover:scale-105">
                 <p className="text-gray-200">
-                  <strong>You:</strong> "Explain quantum computing to me"
+                  <strong>You:</strong> &quot;Explain quantum computing to me&quot;
                 </p>
               </div>
               <div className="bg-blue-900/30 rounded-lg p-4 border border-blue-800/50 transition-transform duration-200 hover:scale-105">
                 <p className="text-gray-200">
-                  <strong>DumbGPT:</strong> "Think of quantum computing like a super-smart coin that can be heads AND
+                  <strong>DumbGPT:</strong> &quot;Think of quantum computing like a super-smart coin that can be heads AND
                   tails at the same time, until you look at it. Regular computers use coins that are either heads OR
-                  tails (1s and 0s), but quantum computers use these magical coins to solve problems way faster! 🪙✨"
+                  tails (1s and 0s), but quantum computers use these magical coins to solve problems way faster! 🪙✨&quot;
                 </p>
               </div>
             </div>
@@ -224,7 +206,9 @@ export default function LandingPage() {
               { name: "History", icon: "📚", color: "bg-orange-900/30 text-orange-300" },
               { name: "General", icon: "🌟", color: "bg-pink-900/30 text-pink-300" },
             ].map((category) => (
-              <motion.div key={category.name}>
+              <motion.div key={category.name}
+                whileHover={{ scale: 1.2 }}
+                transition={{ duration: 0.2, ease: easeInOut }}>
                 <Card className="cursor-pointer bg-gray-800/80 backdrop-blur-sm border-gray-700 h-full">
                   <CardContent className="p-6 text-center">
                     <div
@@ -248,7 +232,7 @@ export default function LandingPage() {
         >
           <h2 className="text-4xl font-bold text-white mb-6">Ready to Simplify Your World?</h2>
           <p className="text-xl text-blue-200 mb-8">
-            Join thousands of users who've made complex topics simple with DumbGPT
+            Join thousands of users who&apos;ve made complex topics simple with DumbGPT
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <div className="transition-transform duration-200 hover:scale-105 hover:-translate-y-1">

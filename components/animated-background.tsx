@@ -1,8 +1,16 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { useEffect, useState } from "react";
 
 export function AnimatedBackground() {
+    const [screenHeight, setScreenHeight] = useState(800);
+
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            setScreenHeight(window.innerHeight);
+        }
+    }, []);
     return (
         <div className="fixed inset-0 -z-10 overflow-hidden bg-gray-900">
             {/* Animated gradient mesh background */}
@@ -141,7 +149,7 @@ export function AnimatedBackground() {
                             top: `${Math.random() * 100}%`,
                         }}
                         animate={{
-                            y: [0, -window.innerHeight || -800],
+                            y: [0, -screenHeight],
                             x: [0, 30],
                             scale: [0, 1, 0],
                             opacity: [0, 1, 1, 0],

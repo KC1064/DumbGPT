@@ -25,8 +25,8 @@ export function MessageBubble({ message }: { message: Message }) {
             {/* Message Bubble Content */}
             <div
                 className={`rounded-2xl p-3 shadow-lg max-w-[80%] ${message.isUser
-                        ? "bg-blue-600 text-white"
-                        : "bg-gray-800 border border-gray-700 text-white"
+                    ? "bg-blue-600 text-white"
+                    : "bg-gray-800 border border-gray-700 text-white"
                     }`}
             >
                 <ReactMarkdown
@@ -42,13 +42,19 @@ export function MessageBubble({ message }: { message: Message }) {
                             />
                         ),
                         // Code block / inline code rendering
-                        code: ({ inline, className, children, ...props }) => {
+                        code: (props) => {
+                            const { inline, className, children, ...rest } = props as {
+                                inline?: boolean;
+                                className?: string;
+                                children: React.ReactNode;
+                            };
+
                             const childrenString = React.Children.toArray(children).join("");
 
                             if (!inline) {
                                 return (
                                     <code
-                                        {...props}
+                                        {...rest}
                                         className={`block text-pink-400 text-sm font-mono ${className || ""}`}
                                     >
                                         {childrenString}
@@ -58,13 +64,14 @@ export function MessageBubble({ message }: { message: Message }) {
 
                             return (
                                 <code
-                                    {...props}
+                                    {...rest}
                                     className={`${className || ""} bg-gray-700 px-1 py-0.5 rounded text-sm font-mono text-pink-400`}
                                 >
                                     {childrenString}
                                 </code>
                             );
                         },
+
                         pre: ({ children, ...props }) => (
                             <pre
                                 className="bg-black text-white rounded-lg overflow-x-auto p-3 my-2 text-sm"
