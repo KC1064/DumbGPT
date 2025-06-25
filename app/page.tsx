@@ -108,8 +108,9 @@ export default function LandingPage() {
                 size="lg"
                 variant="outline"
                 className="text-lg px-8 py-6 border-gray-600 text-gray-800 hover:text-slate-700 hover:border-gray-400"
+                asChild
               >
-                Learn More
+                <a href="#why-choose">Learn More</a>
               </Button>
             </div>
           </motion.div>
@@ -146,7 +147,7 @@ export default function LandingPage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 px-4 bg-gray-900/50 backdrop-blur-sm">
+      <section className="py-20 px-4 bg-gray-900/50 backdrop-blur-sm" id="why-choose">
         <div
           className="container mx-auto max-w-6xl"
         >
