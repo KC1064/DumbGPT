@@ -10,6 +10,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { AnimatedBackground } from "@/components/animated-background"
+import { FirebaseError } from "firebase/app";
 
 
 export default function LoginPage() {
@@ -28,27 +29,30 @@ export default function LoginPage() {
       const userCred = await signInWithEmailAndPassword(auth, email, password);
       console.log("User logged in:", userCred.user);
       router.push("/chat"); // Redirect to home page after successful login
-    } catch (error: any) {
+    } catch (error: unknown) {
       let errorMessage = "Login failed. Please try again.";
 
-      // Handle specific Firebase error codes
-      switch (error.code) {
-        case "auth/invalid-email":
-          errorMessage = "Invalid email address.";
-          break;
-        case "auth/user-disabled":
-          errorMessage = "This account has been disabled.";
-          break;
-        case "auth/user-not-found":
-          errorMessage = "No account found with this email.";
-          break;
-        case "auth/wrong-password":
-          errorMessage = "Incorrect password.";
-          break;
-        default:
-          errorMessage = error.message;
+      if (error instanceof FirebaseError) {
+        switch (error.code) {
+          case "auth/invalid-email":
+            errorMessage = "Invalid email address.";
+            break;
+          case "auth/user-disabled":
+            errorMessage = "This account has been disabled.";
+            break;
+          case "auth/user-not-found":
+            errorMessage = "No account found with this email.";
+            break;
+          case "auth/wrong-password":
+            errorMessage = "Incorrect password.";
+            break;
+          default:
+            errorMessage = error.message;
+        }
+      } else if (error instanceof Error) {
+        // Fallback for non-Firebase errors
+        errorMessage = error.message;
       }
-
       setError(errorMessage);
     } finally {
       setLoading(false);
@@ -109,7 +113,7 @@ export default function LoginPage() {
             </div>
             <Button className="w-full hover-lift group glow-effect" type="submit" disabled={loading}>
               {loading ? "Signing In..." : "Sign In"}
-              <span className="ml-2 transition-transform duration-300 group-hover:translate-x-1">→</span>
+              <span className="ml-2 transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
             </Button>
 
             <div className="text-center text-sm text-gray-400 transition-colors duration-300">

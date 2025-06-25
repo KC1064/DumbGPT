@@ -4,13 +4,18 @@
 import { motion } from "framer-motion";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Button } from "./ui/button";
-import { getAuth, signOut } from "firebase/auth";
+import { getAuth, signOut, User } from "firebase/auth";
 import { LogOut } from "lucide-react";
+
+type GenreData = {
+    color: string;
+    icon: React.ReactNode;
+};
 
 export function Header({ selectedGenre, genreData, user }: {
     selectedGenre: string;
-    genreData: any;
-    user: any;
+    genreData: GenreData;
+    user: User | null;
 }) {
     return (
         <motion.header

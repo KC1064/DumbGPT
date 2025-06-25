@@ -10,6 +10,7 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../config/firebase";
 import { useState } from "react"
 import { useRouter } from "next/navigation"
+import { FirebaseError } from "firebase/app"
 
 export default function SignupPage() {
     const [firstName, setFirstName] = useState("");
@@ -67,27 +68,30 @@ export default function SignupPage() {
             });
 
             router.push("/chat"); // Redirect to chat page after successful signup
-        } catch (error: any) {
-            let errorMessage = "Signup failed. Please try again.";
+        } catch (error: unknown) {
+            let errorMessage = "Login failed. Please try again.";
 
-            // Handle specific Firebase error codes
-            switch (error.code) {
-                case "auth/email-already-in-use":
-                    errorMessage = "An account with this email already exists.";
-                    break;
-                case "auth/invalid-email":
-                    errorMessage = "Invalid email address.";
-                    break;
-                case "auth/operation-not-allowed":
-                    errorMessage = "Email/password accounts are not enabled.";
-                    break;
-                case "auth/weak-password":
-                    errorMessage = "Password should be at least 6 characters.";
-                    break;
-                default:
-                    errorMessage = error.message;
+            if (error instanceof FirebaseError) {
+                switch (error.code) {
+                    case "auth/invalid-email":
+                        errorMessage = "Invalid email address.";
+                        break;
+                    case "auth/user-disabled":
+                        errorMessage = "This account has been disabled.";
+                        break;
+                    case "auth/user-not-found":
+                        errorMessage = "No account found with this email.";
+                        break;
+                    case "auth/wrong-password":
+                        errorMessage = "Incorrect password.";
+                        break;
+                    default:
+                        errorMessage = error.message;
+                }
+            } else if (error instanceof Error) {
+                // Fallback for non-Firebase errors
+                errorMessage = error.message;
             }
-
             setError(errorMessage);
         } finally {
             setLoading(false);

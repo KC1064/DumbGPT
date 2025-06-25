@@ -223,7 +223,7 @@ export default function LandingPage() {
               { name: "Science", icon: "🔬", color: "bg-indigo-900/30 text-indigo-300" },
               { name: "History", icon: "📚", color: "bg-orange-900/30 text-orange-300" },
               { name: "General", icon: "🌟", color: "bg-pink-900/30 text-pink-300" },
-            ].map((category, index) => (
+            ].map((category) => (
               <motion.div key={category.name}>
                 <Card className="cursor-pointer bg-gray-800/80 backdrop-blur-sm border-gray-700 h-full">
                   <CardContent className="p-6 text-center">
